@@ -13,9 +13,10 @@ return [
     */
    
     'supportsCredentials' => false,
-    'allowedOrigins' => ['vrchat-cloud-slide.firebaseapp.com', 'vrchat-cs.firebaseapp.com', 'localhost'],
+    // 'allowedOrigins' => ['vrchat-cloud-slide.firebaseapp.com', 'vrchat-cs.firebaseapp.com', 'localhost:3000'],
+    'allowedOrigins' => ['*'],
     'allowedOriginsPatterns' => [],
-    'allowedHeaders' => ['*'],
+    'allowedHeaders' => ['Content-Type', 'X-Requested-With'],
     'allowedMethods' => ['*'],
     'exposedHeaders' => [],
     'maxAge' => 0,
