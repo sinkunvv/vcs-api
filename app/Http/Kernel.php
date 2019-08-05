@@ -38,11 +38,11 @@ class Kernel extends HttpKernel
         ],
 
         'api' => [
-            'throttle:60,1',
-            'bindings',
-
             //CORS Addon
             \Barryvdh\Cors\HandleCors::class,
+            
+            'throttle:60,1',
+            'bindings',
         ],
     ];
 

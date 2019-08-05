@@ -5,6 +5,13 @@ use Illuminate\Http\Request;
 
 interface UsersRepositoryInterface
 {
-    // ユーザ存在確認
-    public function isExists($user_id);
+    // ユーザ確認
+    public function limit($uid);
+
+    // ユーザ情報取得
+    public function get($uid);
+
+    // ユーザ更新
+    public function update($uid);
+
 }

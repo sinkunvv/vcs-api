@@ -10,7 +10,7 @@ use Carbon\Carbon;
  * Class ShareService
  * @package App\Services
  */
-class ShareService extends Service
+class UserService extends Service
 {
     protected $usersRepository;
 
@@ -20,11 +20,21 @@ class ShareService extends Service
         $this->usersRepository = $usersRepository;
     }
 
-    // パスランキング取得
-    public function getData($user_id)
+    // ユーザ情報取得
+    public function get($uid)
     {
-        $data = array();
-        return $data;
+        return $this->usersRepository->get($uid);
     }
 
+    // ユーザ情報取得
+    public function limit($uid)
+    {
+        return $this->usersRepository->limit($uid);
+    }
+
+    // ユーザ更新
+    public function update($data)
+    {
+        return $this->usersRepository->update($data);
+    }
 }

@@ -20,12 +20,6 @@ class StorageService extends Service
         $this->storageRepository = $storageRepository;
     }
 
-    // パスランキング取得
-    public function downloadPDF()
-    {
-        return $this->storageRepository->downloadPDF();
-    }
-
     // スライド取得
     public function get($slide_name)
     {

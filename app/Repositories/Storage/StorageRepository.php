@@ -5,29 +5,23 @@ namespace App\Repositories\Storage;
 use Google\Cloud\Storage\StorageClient;
 use DB;
 use Log;
+use App\Models\Users;
 use App\Models\Slides;
 use App\Models\Pages;
 
 class StorageRepository implements StorageRepositoryInterface
 {
+    protected $users;
     protected $slides;
     protected $pages;
 
 
-    public function __construct(Slides $slides, Pages $pages)
+    public function __construct(Users $users, Slides $slides, Pages $pages)
     {
+        $this->users = $users;
         $this->slides = $slides;
         $this->pages = $pages;
     }
-
-    // public function downloadPDF()
-    // {
-    //     $client = new StorageClient();
-    //     $bucket = $client->bucket('vrchat-slide-system.appspot.com');
-    //     $object = $bucket->object('slide/fef38547-1da5-45c4-8569-f7452af36a83');
-    //     $object->downloadToFile(storage_path('temp/sample.pdf'));
-    //     return "ok";
-    // }
 
     public function get($slide_name)
     {
@@ -57,7 +51,10 @@ class StorageRepository implements StorageRepositoryInterface
 
         DB::beginTransaction();
         try {
+            $user = $this->users->where('firebase_uid', $data->uid)->first();
+
             // スライド登録
+            $slide->user_id = $user->id;
             $slide->name = $data->name;
             $slide->pages = $data->pageNum;
             $slide->save();

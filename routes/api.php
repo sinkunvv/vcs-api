@@ -18,9 +18,12 @@ use Illuminate\Http\Request;
 // });
 
 Route::group(['middleware' => 'api'], function() {
-    // ランキング取得
-    // Route::get('{user_id}/{slide_id}',  'Api\StorageController@getData');
+    // スライド情報
     Route::get('{slide_name}',  'Api\StorageController@get');
     Route::post('insert/slide',  'Api\StorageController@insertSlide');
     Route::post('insert/page',  'Api\StorageController@insertPage');
+
+    Route::get('user/{uid}',  'Api\UserController@get');
+    Route::get('user/limit/{uid}',  'Api\UserController@limit');
+    Route::post('user/update',  'Api\UserController@update');
 });
