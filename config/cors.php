@@ -13,10 +13,11 @@ return [
     */
    
     'supportsCredentials' => false,
-    // 'allowedOrigins' => ['vrchat-cloud-slide.firebaseapp.com', 'vrchat-cs.firebaseapp.com', 'localhost:3000'],
-    'allowedOrigins' => ['*'],
+    'allowedOrigins' => ['vrchat-cloud-slide.firebaseapp.com', 'vcs.idevs.jp', 'localhost:3000'],
+    // 'allowedOrigins' => ['*'],
     'allowedOriginsPatterns' => [],
-    'allowedHeaders' => ['Content-Type', 'X-Requested-With'],
+    // 'allowedHeaders' => ['Content-Type', 'X-Requested-With'],
+    'allowedHeaders' => ['*'],
     'allowedMethods' => ['*'],
     'exposedHeaders' => [],
     'maxAge' => 0,
