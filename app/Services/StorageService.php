@@ -21,9 +21,9 @@ class StorageService extends Service
     }
 
     // スライド取得
-    public function get($slide_name)
+    public function get($slide_uid)
     {
-        return $this->storageRepository->get($slide_name);
+        return $this->storageRepository->get($slide_uid);
     }
 
     // スライド登録
@@ -35,5 +35,11 @@ class StorageService extends Service
     public function insertPage($data)
     {
         return $this->storageRepository->insertPage($data);
+    }
+
+    // スライド削除
+    public function delete($slide_uid)
+    {
+        return $this->storageRepository->delete($slide_uid);
     }
 }

@@ -18,13 +18,16 @@ class StorageController extends Controller
         $this->storageService = $storageService;
     }
 
-    function get($slide_name) {
-        return $this->storageService->get($slide_name);
+    function get($slide_uid) {
+        return $this->storageService->get($slide_uid);
     }
     function insertSlide(Request $req) {
         return $this->storageService->insertSlide($req);
     }
     function insertPage(Request $req) {
         return $this->storageService->insertPage($req);
+    }
+    function delete($slide_uid) {
+        return $this->storageService->delete($slide_uid);
     }
 }

@@ -19,7 +19,8 @@ use Illuminate\Http\Request;
 
 Route::group(['middleware' => 'api'], function() {
     // スライド情報
-    Route::get('{slide_name}',  'Api\StorageController@get');
+    Route::get('{slide_uid}',  'Api\StorageController@get');
+    Route::get('delete/{slide_uid}',  'Api\StorageController@delete');
     Route::post('insert/slide',  'Api\StorageController@insertSlide');
     Route::post('insert/page',  'Api\StorageController@insertPage');
 

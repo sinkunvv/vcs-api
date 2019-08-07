@@ -38,11 +38,13 @@ class UsersRepository implements UsersRepositoryInterface
         }
 
         $data = $this->users
-            ->select('slides.name', 'pages.url')
+            ->select('slides.slide_uid', 'slides.pages', 'pages.url')
             ->join('slides', 'users.id', 'slides.user_id')
             ->join('pages', 'slides.id', 'pages.slide_id')
             ->where('users.firebase_uid', $uid)
             ->where('pages.page', 1)
+            ->where('slides.active', 1)
+            ->where('pages.active', 1)
             ->orderBy('slides.id', 'desc')
             ->get();
 
