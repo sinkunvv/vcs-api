@@ -17,14 +17,15 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::group(['middleware' => 'api'], function() {
+Route::group(['middleware' => 'api'], function () {
     // スライド情報
     Route::get('{slide_uid}',  'Api\StorageController@get');
     Route::get('delete/{slide_uid}',  'Api\StorageController@delete');
-    Route::post('insert/slide',  'Api\StorageController@insertSlide');
-    Route::post('insert/page',  'Api\StorageController@insertPage');
+
+    Route::match(['options', 'put'], 'insert/slide',  'Api\StorageController@insertSlide');
+    Route::match(['options', 'put'], 'insert/page',  'Api\StorageController@insertPage');
 
     Route::get('user/{uid}',  'Api\UserController@get');
     Route::get('user/limit/{uid}',  'Api\UserController@limit');
-    Route::post('user/update',  'Api\UserController@update');
+    Route::match(['options', 'put'], 'user/update',  'Api\UserController@update');
 });
