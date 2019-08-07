@@ -21,11 +21,10 @@ Route::group(['middleware' => 'api'], function () {
     // スライド情報
     Route::get('{slide_uid}',  'Api\StorageController@get');
     Route::get('delete/{slide_uid}',  'Api\StorageController@delete');
-
-    Route::match(['options', 'put'], 'insert/slide',  'Api\StorageController@insertSlide');
-    Route::match(['options', 'put'], 'insert/page',  'Api\StorageController@insertPage');
+    Route::post('insert/slide',  'Api\StorageController@insertSlide');
+    Route::post('insert/page',  'Api\StorageController@insertPage');
 
     Route::get('user/{uid}',  'Api\UserController@get');
     Route::get('user/limit/{uid}',  'Api\UserController@limit');
-    Route::match(['options', 'put'], 'user/update',  'Api\UserController@update');
+    Route::post('user/update',  'Api\UserController@update');
 });
